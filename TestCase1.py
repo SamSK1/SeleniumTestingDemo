@@ -18,21 +18,31 @@ driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), opti
 driver.get('http://www.google.com')
 time.sleep(2)
 
-verifyUrl=driver.current_url
+coockiesSkip=driver.find_element(by=By.XPATH, value='//*[@id="W0wltc"]')
+coockiesSkip.click()
 
+time.sleep(2)
+
+verifyUrl=driver.current_url
 if verifyUrl == 'https://www.google.com/?gws_rd=ssl':
     print('link verified')
 
-time.sleep(2)
+time.sleep(10)
 
-coockiesSkip=driver.find_element(by=By.XPATH, value='//*[@id="W0wltc"]')
-coockiesSkip.click()
-time.sleep(2)
 inputSearch=driver.find_element(by=By.XPATH, value='/html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/div/div[2]/input')
 inputSearch.click()
+
 time.sleep(2)
+
 inputSearch.send_keys('Zurich')
+
 time.sleep(1)
+
 inputSearch.send_keys(Keys.ENTER)
+
+time.sleep(2)
+
+
+
 
 
